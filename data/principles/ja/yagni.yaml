@@ -1,0 +1,56 @@
+$schema: "../../schemas/principle.schema.json"
+
+meta:
+  id: "principle:yagni"
+  version: "1.0.0"
+  lang: "ja"
+  license: "CC-BY-4.0"
+  lastUpdated: "2025-01-28"
+
+principle:
+  name: "YAGNI"
+  nameJa: "You Aren't Gonna Need It"
+  category: "coding-practice"
+  summary: "今必要でない機能は実装しない"
+  description: |
+    エクストリーム・プログラミング（XP）で提唱された原則。
+    「将来必要になるかもしれない」という理由で機能を追加しない。
+    実際に必要になった時点で実装する方が、結果的に効率的。
+    
+  triggerTokens:
+    - "YAGNI"
+    - "今必要なものだけ"
+    - "You Aren't Gonna Need It"
+
+  promptFragment: "将来の可能性ではなく、現在の要件に集中する。過度な汎用化を避ける"
+
+  tensions:
+    - with: "principle:solid"
+      description: |
+        SOLID（特にOCP）は将来の拡張性を考慮した設計を推奨するが、
+        YAGNIは「今必要ないなら作るな」と言う。
+        バランスが重要で、明確な拡張ポイントのみ設計する。
+      severity: "medium"
+      
+    - with: "principle:dry"
+      description: |
+        DRYのための共通化が「将来のため」の抽象化に発展しがち。
+        実際に3回重複するまで共通化を待つのが実用的。
+      severity: "medium"
+
+  recommendedFor:
+    - persona: "speed-coder"
+      weight: 1.0
+    - persona: "consultant"
+      weight: 0.5
+    - persona: "auditor"
+      weight: 0.2
+
+  references:
+    - title: "Extreme Programming Explained"
+      author: "Kent Beck"
+      year: 1999
+      url: "https://www.amazon.co.jp/dp/4274217620"
+      
+    - title: "You Aren't Gonna Need It"
+      url: "https://wiki.c2.com/?YouArentGonnaNeedIt"

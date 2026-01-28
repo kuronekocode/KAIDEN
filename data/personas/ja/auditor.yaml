@@ -9,7 +9,7 @@ meta:
       date: "2025-01-28"
       changes:
         - "初版リリース"
-        - "SOLID、DRY、セキュリティ原則を推奨に設定"
+        - "SOLID、DRY を重視した品質重視設定"
 
 persona:
   name: "コードレビュアー / 監査者"
@@ -36,14 +36,6 @@ persona:
       - id: "principle:yagni"
         enabled: false
         weight: 0.2
-        
-      - id: "principle:security-first"
-        enabled: true
-        weight: 1.0
-        
-      - id: "principle:defensive-programming"
-        enabled: true
-        weight: 0.8
     
     style:
       verbosity: "detailed"
@@ -60,3 +52,4 @@ persona:
     principles:
       "principle:solid": ">=1.0.0"
       "principle:dry": ">=1.0.0"
+      "principle:kiss": ">=1.0.0"

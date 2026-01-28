@@ -72,6 +72,8 @@ kaiden/
 │   │   ├── ja/               # 日本語（primary）
 │   │   │   ├── solid.yaml
 │   │   │   ├── dry.yaml
+│   │   │   ├── yagni.yaml
+│   │   │   ├── kiss.yaml
 │   │   │   └── ...
 │   │   └── en/               # 英語
 │   │
@@ -198,7 +200,7 @@ tensions:
 ### Phase 1: 基盤（現在）
 
 1. [ ] JSON Schema 定義
-2. [ ] サンプルデータ作成（SOLID, DRY, 3ペルソナ, 主要MCP）
+2. [ ] サンプルデータ作成（SOLID, DRY, YAGNI, KISS, 3ペルソナ, 主要MCP）
 3. [ ] core パッケージ - 生成ロジック
 4. [ ] CLI - generate コマンド
 
@@ -229,7 +231,7 @@ tensions:
 
 ## 参考リソース
 
-- AGENTS.md 仕様: https://github.com/agentic-ai/agents-md
+- AGENTS.md 仕様: https://github.com/humanalog/agents-md
 - Agent Skills 仕様: https://agentskills.io
 - MCP 仕様: https://modelcontextprotocol.io
 - FAIR原則: https://www.go-fair.org/fair-principles/

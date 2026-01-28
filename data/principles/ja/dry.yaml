@@ -1,0 +1,53 @@
+$schema: "../../schemas/principle.schema.json"
+
+meta:
+  id: "principle:dry"
+  version: "1.0.0"
+  lang: "ja"
+  license: "CC-BY-4.0"
+  lastUpdated: "2025-01-28"
+
+principle:
+  name: "DRY"
+  nameJa: "Don't Repeat Yourself"
+  category: "coding-practice"
+  summary: "同じ知識やロジックを複数箇所に記述しない"
+  description: |
+    Andy HuntとDave Thomasによって「達人プログラマー」で提唱された原則。
+    すべての知識はシステム内で単一の、明確な、信頼できる表現を持つべき。
+    コードの重複だけでなく、知識・意図・ロジックの重複も対象。
+    
+  triggerTokens:
+    - "DRY原則"
+    - "重複を避ける"
+    - "Don't Repeat Yourself"
+
+  promptFragment: "同じロジックを複数箇所に書かない。共通化・抽象化を検討する"
+
+  tensions:
+    - with: "principle:yagni"
+      description: |
+        DRYを追求して「将来使うかもしれない」共通化を行うと、
+        YAGNI違反になりがち。現時点で3回以上重複しているものだけを
+        共通化する「Rule of Three」が実用的。
+      severity: "medium"
+      
+    - with: "principle:kiss"
+      description: |
+        過度な共通化・抽象化は、コードの追跡を困難にし、
+        KISSの観点から複雑すぎる設計になる場合がある。
+      severity: "low"
+
+  recommendedFor:
+    - persona: "auditor"
+      weight: 0.9
+    - persona: "consultant"
+      weight: 0.7
+    - persona: "speed-coder"
+      weight: 0.5
+
+  references:
+    - title: "達人プログラマー"
+      author: "Andrew Hunt, David Thomas"
+      year: 1999
+      url: "https://www.amazon.co.jp/dp/4274226298"

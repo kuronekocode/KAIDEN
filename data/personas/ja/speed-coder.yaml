@@ -37,10 +37,6 @@ persona:
       - id: "principle:solid"
         enabled: false
         weight: 0.2  # 必要最小限のみ
-        
-      - id: "principle:pragmatic"
-        enabled: true
-        weight: 0.9
     
     style:
       verbosity: "minimal"

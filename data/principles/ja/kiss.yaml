@@ -1,0 +1,53 @@
+$schema: "../../schemas/principle.schema.json"
+
+meta:
+  id: "principle:kiss"
+  version: "1.0.0"
+  lang: "ja"
+  license: "CC-BY-4.0"
+  lastUpdated: "2025-01-28"
+
+principle:
+  name: "KISS"
+  nameJa: "Keep It Simple, Stupid"
+  category: "coding-practice"
+  summary: "シンプルに保つ。不必要な複雑さを避ける"
+  description: |
+    米海軍で生まれた設計原則。
+    システムは複雑にするより単純に保った方がうまく機能する。
+    不必要な複雑さは避け、最もシンプルな解決策を選ぶべき。
+    
+  triggerTokens:
+    - "KISS原則"
+    - "シンプルに"
+    - "Keep It Simple"
+
+  promptFragment: "最もシンプルな解決策を選ぶ。複雑さは必要な場合のみ追加する"
+
+  tensions:
+    - with: "principle:solid"
+      description: |
+        SOLIDに従った設計は、インターフェースや抽象層が増え、
+        KISSの観点からは「複雑すぎる」と見なされる場合がある。
+        要件に応じたバランスが必要。
+      severity: "low"
+      
+    - with: "principle:dry"
+      description: |
+        DRYのための共通化が、コードの追跡を困難にし、
+        結果的にシンプルさを損なう場合がある。
+      severity: "low"
+
+  recommendedFor:
+    - persona: "speed-coder"
+      weight: 1.0
+    - persona: "mentor"
+      weight: 0.8
+    - persona: "consultant"
+      weight: 0.6
+    - persona: "auditor"
+      weight: 0.6
+
+  references:
+    - title: "KISS principle"
+      url: "https://en.wikipedia.org/wiki/KISS_principle"
