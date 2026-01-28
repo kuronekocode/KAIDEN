@@ -6,7 +6,11 @@
   "type": "module",
   "scripts": {
     "build": "pnpm -r build",
-    "test": "pnpm -r test",
+    "test": "node scripts/run-tests.js",
+    "test:watch": "node scripts/run-tests.js -- --watch",
+    "test:coverage": "node scripts/run-tests.js -- --coverage",
+    "test:all": "pnpm -r test",
+    "setup": "node scripts/setup-check.js",
     "lint": "pnpm -r lint",
     "validate:schemas": "pnpm --filter @kaiden/core validate:schemas",
     "validate:data": "pnpm --filter @kaiden/core validate:data",

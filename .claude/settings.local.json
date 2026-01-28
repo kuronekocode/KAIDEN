@@ -1,7 +1,24 @@
 {
   "permissions": {
     "allow": [
-      "mcp__desktop-commander__list_directory"
+      "mcp__desktop-commander__list_directory",
+      "Bash(wc:*)",
+      "Bash(find:*)",
+      "Read(//f/KNLAB/20260128_kaiden/**)",
+      "Bash(pnpm test:*)",
+      "Bash(npm test:*)",
+      "Bash(node scripts/setup-check.js:*)",
+      "Bash(powershell.exe -NoProfile -Command \"cd f:\\\\KNLAB\\\\20260128_kaiden; node scripts/setup-check.js\")",
+      "Bash(cmd /c \"npm test\")",
+      "Bash(echo:*)",
+      "Bash(\"/c/Program Files/nodejs/node.exe\" scripts/run-tests.js)",
+      "Bash(\"/c/Program Files/nodejs/pnpm.cmd\" -v)",
+      "Bash(\"/c/Program Files/nodejs/npm.cmd\" list -g pnpm)",
+      "Bash(export PATH=\"/c/Users/kanek/AppData/Roaming/npm:/c/Program Files/nodejs:$PATH\")",
+      "Bash(node:*)",
+      "Bash(\"/c/Users/kanek/AppData/Roaming/npm/pnpm.cmd\" add -D @vitest/coverage-v8)",
+      "Bash(\"/c/Users/kanek/AppData/Roaming/npm/pnpm.cmd\" remove @vitest/coverage-v8)",
+      "Bash(\"/c/Users/kanek/AppData/Roaming/npm/pnpm.cmd\" add -D @vitest/coverage-v8@^2.1.9)"
     ]
   }
 }

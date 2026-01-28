@@ -4,6 +4,22 @@
 
 import type { PersonaFile, PrincipleFile } from '@kaiden/core';
 
+/**
+ * Weight thresholds for principle importance classification
+ */
+const DEFAULT_PRINCIPLE_WEIGHT = 0.5 as const;
+const HIGH_WEIGHT_THRESHOLD = 0.8 as const;
+const MEDIUM_WEIGHT_THRESHOLD = 0.5 as const;
+
+/**
+ * Classify principle weight into display label
+ */
+function getWeightLabel(weight: number): '高' | '中' | '低' {
+  if (weight >= HIGH_WEIGHT_THRESHOLD) return '高';
+  if (weight >= MEDIUM_WEIGHT_THRESHOLD) return '中';
+  return '低';
+}
+
 /** 原則の有効/無効状態 */
 export interface PrincipleState {
   readonly id: string;
@@ -41,7 +57,7 @@ export function createPrincipleStatesFromPersona(
     states.set(principle.meta.id, {
       id: principle.meta.id,
       enabled: false,
-      weight: 0.5,
+      weight: DEFAULT_PRINCIPLE_WEIGHT,
     });
   }
   
@@ -52,7 +68,7 @@ export function createPrincipleStatesFromPersona(
       states.set(defaultPrinciple.id, {
         id: defaultPrinciple.id,
         enabled: defaultPrinciple.enabled,
-        weight: defaultPrinciple.weight,
+        weight: defaultPrinciple.weight ?? DEFAULT_PRINCIPLE_WEIGHT,
       });
     }
   }
@@ -94,8 +110,8 @@ export function generateAgentsMd(
     
     for (const principle of enabledPrinciples) {
       const pState = state.principleStates.get(principle.meta.id)!;
-      const weightLabel = pState.weight >= 0.8 ? '高' : pState.weight >= 0.5 ? '中' : '低';
-      
+      const weightLabel = getWeightLabel(pState.weight);
+
       content += `### ${principle.principle.name}`;
       if (principle.principle.nameJa) {
         content += ` (${principle.principle.nameJa})`;
