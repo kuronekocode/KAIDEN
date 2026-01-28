@@ -1,0 +1,75 @@
+$schema: "../schemas/mcp.schema.json"
+
+meta:
+  id: "mcp:filesystem"
+  version: "1.0.0"
+  sourceUrl: "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
+  lastChecked: "2025-01-28"
+
+mcp:
+  name: "@modelcontextprotocol/server-filesystem"
+  displayName: "ファイルシステム"
+  description: |
+    ローカルファイルシステムへの安全なアクセスを提供するMCPサーバー。
+    指定したディレクトリ配下のファイル読み書き、ディレクトリ操作が可能。
+  category: "system"
+  
+  setup:
+    authRequired: false
+    envVariables: []
+    
+    configTemplate: |
+      {
+        "mcpServers": {
+          "filesystem": {
+            "command": "npx",
+            "args": [
+              "-y",
+              "@modelcontextprotocol/server-filesystem",
+              "{allowedDirectories}"
+            ]
+          }
+        }
+      }
+      
+    variables:
+      - name: "allowedDirectories"
+        description: "アクセスを許可するディレクトリパス（カンマ区切りで複数指定可）"
+        required: true
+        default: "."
+        
+  links:
+    docs: "https://modelcontextprotocol.io/docs/servers/filesystem"
+    npm: "https://www.npmjs.com/package/@modelcontextprotocol/server-filesystem"
+    github: "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
+    
+  tools:
+    - name: "read_file"
+      description: "ファイルの内容を読み取る"
+      
+    - name: "read_multiple_files"
+      description: "複数のファイルを同時に読み取る"
+      
+    - name: "write_file"
+      description: "ファイルに内容を書き込む（新規作成または上書き）"
+      
+    - name: "edit_file"
+      description: "ファイルの一部を編集する（差分適用）"
+      
+    - name: "create_directory"
+      description: "新しいディレクトリを作成する"
+      
+    - name: "list_directory"
+      description: "ディレクトリの内容を一覧表示する"
+      
+    - name: "directory_tree"
+      description: "ディレクトリのツリー構造を表示する"
+      
+    - name: "move_file"
+      description: "ファイルまたはディレクトリを移動・リネームする"
+      
+    - name: "search_files"
+      description: "パターンに一致するファイルを検索する"
+      
+    - name: "get_file_info"
+      description: "ファイルのメタデータ（サイズ、更新日時など）を取得する"

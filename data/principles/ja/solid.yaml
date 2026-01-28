@@ -1,0 +1,87 @@
+$schema: "../../schemas/principle.schema.json"
+
+meta:
+  id: "principle:solid"
+  version: "1.0.0"
+  lang: "ja"
+  license: "CC-BY-4.0"
+  lastUpdated: "2025-01-28"
+
+principle:
+  name: "SOLID"
+  nameJa: "SOLID原則"
+  category: "object-oriented-design"
+  summary: "オブジェクト指向設計の5つの基本原則"
+  description: |
+    Robert C. Martin（Uncle Bob）によって提唱された、
+    保守性・拡張性・再利用性の高いソフトウェアを設計するための5原則。
+    
+  triggerTokens:
+    - "SOLID原則"
+    - "SOLID準拠"
+    - "SOLID設計"
+
+  children:
+    - id: "principle:srp"
+      name: "Single Responsibility Principle"
+      nameJa: "単一責任の原則"
+      description: "クラスを変更する理由は1つだけであるべき"
+      promptFragment: "各モジュールは単一の責務を持つ"
+      
+    - id: "principle:ocp"
+      name: "Open/Closed Principle"
+      nameJa: "開放閉鎖の原則"
+      description: "ソフトウェアは拡張に対して開き、修正に対して閉じるべき"
+      promptFragment: "拡張に開き、修正に閉じる"
+      
+    - id: "principle:lsp"
+      name: "Liskov Substitution Principle"
+      nameJa: "リスコフの置換原則"
+      description: "派生型はその基底型と置換可能でなければならない"
+      promptFragment: "派生型は基底型と置換可能"
+      
+    - id: "principle:isp"
+      name: "Interface Segregation Principle"
+      nameJa: "インターフェース分離の原則"
+      description: "クライアントは使用しないメソッドへの依存を強制されるべきではない"
+      promptFragment: "クライアント固有のインターフェースを用意"
+      
+    - id: "principle:dip"
+      name: "Dependency Inversion Principle"
+      nameJa: "依存性逆転の原則"
+      description: "上位モジュールは下位モジュールに依存すべきではない。両者とも抽象に依存すべき"
+      promptFragment: "抽象に依存し、具象に依存しない"
+
+  tensions:
+    - with: "principle:yagni"
+      description: |
+        SOLID（特にOCP）を厳格に適用すると、将来の拡張性のための
+        抽象化を作りがち。これはYAGNI（You Aren't Gonna Need It）に
+        違反する可能性がある。バランスが重要。
+      severity: "medium"
+      
+    - with: "principle:kiss"
+      description: |
+        SOLIDに従った設計は、インターフェースや抽象クラスが増え、
+        コードが複雑になりがち。KISSの観点からはオーバーエンジニアリング
+        と見なされる場合がある。
+      severity: "low"
+
+  recommendedFor:
+    - persona: "auditor"
+      weight: 1.0
+    - persona: "consultant"
+      weight: 0.8
+    - persona: "speed-coder"
+      weight: 0.3
+    - persona: "mentor"
+      weight: 0.9
+
+  references:
+    - title: "Clean Architecture"
+      author: "Robert C. Martin"
+      year: 2017
+      url: "https://www.amazon.co.jp/dp/4048930656"
+      
+    - title: "SOLID Design Principles"
+      url: "https://en.wikipedia.org/wiki/SOLID"
