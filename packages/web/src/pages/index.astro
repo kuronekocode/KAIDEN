@@ -1,0 +1,264 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="kaiden - LLMエージェント最適化ツール">
+  <div class="hero">
+    <h1 class="hero-title">
+      <span class="hero-icon">🥋</span>
+      kaiden
+    </h1>
+    <p class="hero-subtitle">LLMエージェントの振る舞いを<strong>原理参照型</strong>で最適化</p>
+    <p class="hero-description">
+      従来の「具体的指示の蓄積」ではなく、LLMが事前学習済みの設計原則への参照を通じて<br />
+      推論を誘導し、プロンプトの肥大化を防ぎます。
+    </p>
+    <div class="hero-actions">
+      <a href="/kaiden/generator" class="btn btn-primary">
+        始める →
+      </a>
+      <a href="https://github.com/kuronekocode/kaiden" class="btn btn-secondary" target="_blank" rel="noopener">
+        GitHubで見る
+      </a>
+    </div>
+  </div>
+
+  <section class="features">
+    <h2 class="section-title">特徴</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>原理参照型</h3>
+        <p>SOLID、DRY、YAGNIなどの設計原則を「ポインタ」として使用。LLMの事前学習済み知識を活用します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <h3>ペルソナベース</h3>
+        <p>スピードコーダー、監査者、コンサルタントなど、用途に応じたプリセットで素早く設定できます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚖️</div>
+        <h3>緊張関係の可視化</h3>
+        <p>SOLID vs YAGNI など、原則間のトレードオフを明示し、バランスある設計判断を支援します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <h3>軽量プロンプト</h3>
+        <p>100項目の具体的ルールではなく、数行の原則参照で同等以上の効果を発揮します。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison">
+    <h2 class="section-title">従来のアプローチとの比較</h2>
+    <div class="comparison-grid">
+      <div class="comparison-card comparison-old">
+        <h3>❌ 従来のアプローチ（肥大化する）</h3>
+        <pre><code>- 変数名はcamelCaseで
+- 関数は20行以内で
+- エラーハンドリングは早期リターンで
+- ...（100項目）</code></pre>
+      </div>
+      <div class="comparison-card comparison-new">
+        <h3>✅ kaidenのアプローチ（原理参照型）</h3>
+        <pre><code>設計原則: SOLID, DRY, YAGNI
+→ 事前学習済み知識へのポインタとして機能
+→ プロジェクト固有の「差分」だけを明示</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>今すぐ始める</h2>
+    <p>ペルソナを選んで、原則を調整するだけ。AGENTS.mdを瞬時に生成します。</p>
+    <a href="/kaiden/generator" class="btn btn-primary btn-lg">
+      ジェネレーターを開く →
+    </a>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 4rem;
+  }
+
+  .hero-icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle strong {
+    color: var(--color-primary);
+  }
+
+  .hero-description {
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--color-text);
+  }
+
+  .features {
+    margin-bottom: 4rem;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .feature-card:hover {
+    border-color: var(--color-primary);
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .feature-card p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .comparison {
+    margin-bottom: 4rem;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .comparison-card {
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .comparison-card h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .comparison-card pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  .comparison-old {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .comparison-new {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .cta {
+    text-align: center;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+</style>

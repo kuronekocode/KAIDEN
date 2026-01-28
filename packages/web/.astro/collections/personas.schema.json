@@ -1,0 +1,153 @@
+{
+  "$ref": "#/definitions/personas",
+  "definitions": {
+    "personas": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "lang": {
+              "type": "string",
+              "enum": [
+                "ja",
+                "en"
+              ]
+            },
+            "changelog": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string"
+                  },
+                  "changes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "version",
+                  "date",
+                  "changes"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "lang"
+          ],
+          "additionalProperties": false
+        },
+        "persona": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "defaults": {
+              "type": "object",
+              "properties": {
+                "principles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "enabled": {
+                        "type": "boolean"
+                      },
+                      "weight": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "enabled",
+                      "weight"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "style": {
+                  "type": "object",
+                  "properties": {
+                    "verbosity": {
+                      "type": "string",
+                      "enum": [
+                        "minimal",
+                        "normal",
+                        "detailed"
+                      ]
+                    },
+                    "tone": {
+                      "type": "string"
+                    },
+                    "focusAreas": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "dependencies": {
+              "type": "object",
+              "properties": {
+                "principles": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "name",
+            "description",
+            "defaults"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "meta",
+        "persona"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
