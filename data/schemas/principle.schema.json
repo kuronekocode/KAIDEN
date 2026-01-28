@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kuronekocode/kaiden/schemas/principle.schema.json",
+  "title": "Principle",
+  "description": "設計原則の定義",
+  "type": "object",
+  "required": ["meta", "principle"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "principle": {
+      "$ref": "#/$defs/PrincipleData"
+    }
+  },
+  "$defs": {
+    "Meta": {
+      "type": "object",
+      "required": ["id", "version", "lang", "license", "lastUpdated"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^principle:[a-z][a-z0-9-]*$",
+          "description": "一意識別子（例: principle:solid）"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "セマンティックバージョン"
+        },
+        "lang": {
+          "type": "string",
+          "enum": ["ja", "en"],
+          "description": "言語コード"
+        },
+        "license": {
+          "type": "string",
+          "description": "ライセンス（例: CC-BY-4.0）"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date",
+          "description": "最終更新日（ISO 8601）"
+        }
+      }
+    },
+    "PrincipleData": {
+      "type": "object",
+      "required": ["name", "category", "summary"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "原則名（英語）"
+        },
+        "nameJa": {
+          "type": "string",
+          "description": "原則名（日本語）"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "object-oriented-design",
+            "functional-design",
+            "architecture",
+            "coding-practice",
+            "testing",
+            "security"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "description": "概要説明"
+        },
+        "description": {
+          "type": "string",
+          "description": "詳細説明"
+        },
+        "triggerTokens": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "推論誘導用のキーフレーズ"
+        },
+        "promptFragment": {
+          "type": "string",
+          "description": "AGENTS.md生成時に含める短い文"
+        },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ChildPrinciple" },
+          "description": "子原則（階層構造）"
+        },
+        "tensions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Tension" },
+          "description": "他の原則との緊張関係"
+        },
+        "recommendedFor": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/PersonaRecommendation" }
+        },
+        "references": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Reference" },
+          "description": "参考文献・リンク"
+        }
+      }
+    },
+    "ChildPrinciple": {
+      "type": "object",
+      "required": ["id", "name", "promptFragment"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^principle:[a-z][a-z0-9-]*$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nameJa": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "promptFragment": {
+          "type": "string"
+        }
+      }
+    },
+    "Tension": {
+      "type": "object",
+      "required": ["with", "description", "severity"],
+      "properties": {
+        "with": {
+          "type": "string",
+          "pattern": "^principle:[a-z][a-z0-9-]*$",
+          "description": "緊張関係にある原則ID"
+        },
+        "description": {
+          "type": "string",
+          "description": "緊張関係の説明"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        }
+      }
+    },
+    "PersonaRecommendation": {
+      "type": "object",
+      "required": ["persona", "weight"],
+      "properties": {
+        "persona": {
+          "type": "string",
+          "description": "ペルソナID（persona:プレフィックスなし）"
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "推奨度（0.0〜1.0）"
+        }
+      }
+    },
+    "Reference": {
+      "type": "object",
+      "required": ["title", "url"],
+      "properties": {
+        "title": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "author": { "type": "string" },
+        "year": { "type": "integer" }
+      }
+    }
+  }
+}

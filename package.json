@@ -1,0 +1,27 @@
+{
+  "name": "kaiden",
+  "version": "0.1.0",
+  "description": "LLMエージェントの振る舞いを原理参照型で最適化するツール",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "validate:schemas": "pnpm --filter @kaiden/core validate:schemas",
+    "validate:data": "pnpm --filter @kaiden/core validate:data",
+    "generate:types": "pnpm --filter @kaiden/core generate:types"
+  },
+  "keywords": [
+    "llm",
+    "agent",
+    "mcp",
+    "prompt-engineering"
+  ],
+  "author": "kuronekocode",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

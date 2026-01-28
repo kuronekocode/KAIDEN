@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kuronekocode/kaiden/schemas/persona.schema.json",
+  "title": "Persona",
+  "description": "エージェントペルソナの定義",
+  "type": "object",
+  "required": ["meta", "persona"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "meta": { "$ref": "#/$defs/Meta" },
+    "persona": { "$ref": "#/$defs/PersonaData" }
+  },
+  "$defs": {
+    "Meta": {
+      "type": "object",
+      "required": ["id", "version", "lang"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^persona:[a-z][a-z0-9-]*$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "lang": {
+          "type": "string",
+          "enum": ["ja", "en"]
+        },
+        "changelog": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ChangelogEntry" }
+        }
+      }
+    },
+    "ChangelogEntry": {
+      "type": "object",
+      "required": ["version", "date", "changes"],
+      "properties": {
+        "version": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "changes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "PersonaData": {
+      "type": "object",
+      "required": ["name", "description", "defaults"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "ペルソナ名"
+        },
+        "description": {
+          "type": "string",
+          "description": "ペルソナの説明"
+        },
+        "icon": {
+          "type": "string",
+          "description": "表示用アイコン（絵文字）"
+        },
+        "defaults": {
+          "$ref": "#/$defs/Defaults"
+        },
+        "dependencies": {
+          "$ref": "#/$defs/Dependencies"
+        }
+      }
+    },
+    "Defaults": {
+      "type": "object",
+      "properties": {
+        "principles": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/PrincipleDefault" }
+        },
+        "style": { "$ref": "#/$defs/Style" }
+      }
+    },
+    "PrincipleDefault": {
+      "type": "object",
+      "required": ["id", "enabled"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^principle:[a-z][a-z0-9-]*$"
+        },
+        "enabled": { "type": "boolean" },
+        "weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "Style": {
+      "type": "object",
+      "properties": {
+        "verbosity": {
+          "type": "string",
+          "enum": ["minimal", "standard", "detailed"]
+        },
+        "tone": {
+          "type": "string",
+          "enum": ["friendly", "neutral", "analytical"]
+        },
+        "focusAreas": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "Dependencies": {
+      "type": "object",
+      "properties": {
+        "principles": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "description": "semver範囲（例: >=1.0.0 <2.0.0）"
+          }
+        }
+      }
+    }
+  }
+}
