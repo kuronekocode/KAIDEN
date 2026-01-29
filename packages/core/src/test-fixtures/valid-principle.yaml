@@ -1,0 +1,16 @@
+meta:
+  id: "principle:test-dry"
+  version: "1.0.0"
+  lang: "ja"
+  license: "CC-BY-4.0"
+  lastUpdated: "2025-01-28"
+
+principle:
+  name: "TEST-DRY"
+  nameJa: "テスト用DRY"
+  category: "coding-practice"
+  summary: "テスト用の原則"
+  description: "テスト用の説明文"
+  triggerTokens:
+    - "TEST-DRY"
+  promptFragment: "テスト用のフラグメント"

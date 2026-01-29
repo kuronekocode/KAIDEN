@@ -1,0 +1,8 @@
+meta:
+  id: "principle:invalid"
+  # YAML syntax error - unbalanced quotes and brackets
+  version: "1.0.0
+  malformed: {key: value, [broken
+principle:
+  name: Invalid YAML with "unbalanced quotes
+  category

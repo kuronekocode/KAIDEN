@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Generator from '../components/Generator.svelte';
+import { loadAllData } from '../lib/data-loader';
+
+// データファイルを読み込み（ビルド時に実行）
+const { personas, principles } = loadAllData('ja');
+---
+
+<Layout title="AGENTS.md ジェネレーター | kaiden">
+  <div class="generator-page">
+    <header class="page-header">
+      <h1>🛠️ AGENTS.md ジェネレーター</h1>
+      <p>ペルソナを選択し、原則を調整して、カスタマイズされた AGENTS.md を生成します。</p>
+    </header>
+    
+    <Generator 
+      client:load 
+      personas={personas} 
+      principles={principles} 
+    />
+  </div>
+</Layout>
+
+<style>
+  .generator-page {
+    padding-bottom: 2rem;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .page-header p {
+    color: var(--color-text-muted);
+  }
+</style>

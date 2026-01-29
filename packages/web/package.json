@@ -1,0 +1,26 @@
+{
+  "name": "@kaiden/web",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "kaiden Web UI - AGENTS.md生成ツール",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^7.0.0",
+    "@kaiden/core": "workspace:*",
+    "astro": "^5.2.0",
+    "svelte": "^5.16.0",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^22.10.0",
+    "playwright": "^1.58.0",
+    "typescript": "^5.7.0"
+  }
+}

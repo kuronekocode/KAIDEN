@@ -1,0 +1,187 @@
+{
+  "$ref": "#/definitions/principles",
+  "definitions": {
+    "principles": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "lang": {
+              "type": "string",
+              "enum": [
+                "ja",
+                "en"
+              ]
+            },
+            "license": {
+              "type": "string"
+            },
+            "lastUpdated": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "lang",
+            "license",
+            "lastUpdated"
+          ],
+          "additionalProperties": false
+        },
+        "principle": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "nameJa": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "triggerTokens": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "promptFragment": {
+              "type": "string"
+            },
+            "children": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "nameJa": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "promptFragment": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "promptFragment"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "tensions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "with": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "severity": {
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ]
+                  }
+                },
+                "required": [
+                  "with",
+                  "description",
+                  "severity"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "recommendedFor": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "persona": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "persona",
+                  "weight"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "references": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "year": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "title",
+                  "url"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "name",
+            "category",
+            "summary"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "meta",
+        "principle"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

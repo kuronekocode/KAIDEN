@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kuronekocode/kaiden/schemas/mcp.schema.json",
+  "title": "MCP",
+  "description": "Model Context Protocol サーバー定義",
+  "type": "object",
+  "required": ["meta", "mcp"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "meta": { "$ref": "#/$defs/Meta" },
+    "mcp": { "$ref": "#/$defs/MCPData" }
+  },
+  "$defs": {
+    "Meta": {
+      "type": "object",
+      "required": ["id", "version", "sourceUrl", "lastChecked"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^mcp:[a-z][a-z0-9-]*$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "lastChecked": {
+          "type": "string",
+          "format": "date"
+        },
+        "checksum": {
+          "type": "string",
+          "description": "ソース変更検知用ハッシュ"
+        }
+      }
+    },
+    "MCPData": {
+      "type": "object",
+      "required": ["name", "displayName", "description", "category"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "パッケージ名（npm）"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "表示名（日本語）"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["system", "web", "database", "ai", "productivity", "development"]
+        },
+        "setup": { "$ref": "#/$defs/Setup" },
+        "links": { "$ref": "#/$defs/Links" },
+        "tools": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Tool" }
+        }
+      }
+    },
+    "Setup": {
+      "type": "object",
+      "properties": {
+        "authRequired": { "type": "boolean" },
+        "envVariables": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/EnvVariable" }
+        },
+        "configTemplate": {
+          "type": "string",
+          "description": "JSON設定テンプレート"
+        },
+        "variables": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ConfigVariable" }
+        }
+      }
+    },
+    "EnvVariable": {
+      "type": "object",
+      "required": ["name", "description"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "required": { "type": "boolean" },
+        "sensitive": { "type": "boolean" }
+      }
+    },
+    "ConfigVariable": {
+      "type": "object",
+      "required": ["name", "description", "required"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "required": { "type": "boolean" },
+        "default": { "type": "string" }
+      }
+    },
+    "Links": {
+      "type": "object",
+      "properties": {
+        "docs": { "type": "string", "format": "uri" },
+        "npm": { "type": "string", "format": "uri" },
+        "github": { "type": "string", "format": "uri" },
+        "changelog": { "type": "string", "format": "uri" },
+        "auth": {
+          "type": "string",
+          "format": "uri",
+          "description": "認証設定ページへのリンク"
+        }
+      }
+    },
+    "Tool": {
+      "type": "object",
+      "required": ["name", "description"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

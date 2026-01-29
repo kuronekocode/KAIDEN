@@ -1,0 +1,14 @@
+meta:
+  id: "persona:test"
+  version: "1.0.0"
+  lang: "ja"
+  changelog: []
+
+persona:
+  name: "Test Persona"
+  description: "テスト用ペルソナ"
+  defaults:
+    principles: []
+    style:
+      verbosity: "standard"
+      tone: "neutral"
