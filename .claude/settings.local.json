@@ -18,7 +18,10 @@
       "Bash(node:*)",
       "Bash(\"/c/Users/kanek/AppData/Roaming/npm/pnpm.cmd\" add -D @vitest/coverage-v8)",
       "Bash(\"/c/Users/kanek/AppData/Roaming/npm/pnpm.cmd\" remove @vitest/coverage-v8)",
-      "Bash(\"/c/Users/kanek/AppData/Roaming/npm/pnpm.cmd\" add -D @vitest/coverage-v8@^2.1.9)"
+      "Bash(\"/c/Users/kanek/AppData/Roaming/npm/pnpm.cmd\" add -D @vitest/coverage-v8@^2.1.9)",
+      "Bash(pnpm dev)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpx playwright install:*)"
     ]
   }
 }
